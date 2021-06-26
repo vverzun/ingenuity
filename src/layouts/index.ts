@@ -1,0 +1,1 @@
+export { GameWithLight } from './GameWithLight';

@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
+import { GameWithLight } from '@layouts';
 
-const Eye: FC = () => <div>I see you</div>;
+const Home: FC = () => <GameWithLight />;
 
-export default Eye;
+export default Home;
