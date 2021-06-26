@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Box, Image } from '@chakra-ui/react';
-import { LightSwitchProps } from './types';
+import type { LightSwitchProps } from './types';
 
 const LightSwitch: FC<LightSwitchProps> = ({
   areLightsOn,
