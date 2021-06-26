@@ -5,7 +5,11 @@
   },
   "extends": [
     "airbnb",
+    "prettier/react",
+    "prettier/prettier",
+    "prettier/@typescript-eslint",
     "plugin:react/recommended",
+    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
@@ -39,6 +43,5 @@
     "import/resolver": {
       "typescript": {}
     }
-  },
-  
+  }
 }
