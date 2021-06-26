@@ -1,1 +1,1 @@
-export { Switcher } from './Switcher';
+export { LightSwitch } from './LightSwitch';

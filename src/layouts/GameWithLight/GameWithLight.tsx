@@ -1,17 +1,20 @@
 import React, { FC, useState } from 'react';
 import { Center } from '@chakra-ui/react';
-import { Switcher } from '@components';
+import { LightSwitch } from '@components';
 
 const GameWithLight: FC = () => {
   const [areLightsOn, setAreLightsOn] = useState<boolean>(false);
 
-  const handleLightsSwitch = (): void => {
+  const handleLightSwitchClick = (): void => {
     setAreLightsOn((prevAreLightsOn) => !prevAreLightsOn);
   };
 
   return (
     <Center height="100vh" backgroundColor={areLightsOn ? 'black' : 'white'}>
-      <Switcher areLightsOn={areLightsOn} onLightsSwitch={handleLightsSwitch} />
+      <LightSwitch
+        areLightsOn={areLightsOn}
+        onLightSwitchClick={handleLightSwitchClick}
+      />
     </Center>
   );
 };
