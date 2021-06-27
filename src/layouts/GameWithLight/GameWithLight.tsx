@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Center } from '@chakra-ui/react';
-import { LightSwitch } from '@components';
+import { LightSwitch, RandomlyPositionedLetter } from '@components';
 import type { LightSwitchSound } from './types';
 
 const GameWithLight: FC = () => {
@@ -26,11 +26,23 @@ const GameWithLight: FC = () => {
   };
 
   return (
-    <Center height="100vh" backgroundColor={areLightsOn ? 'black' : 'white'}>
+    <Center
+      height="100vh"
+      backgroundColor={areLightsOn ? 'black' : 'white'}
+      position="relative"
+    >
       <LightSwitch
         areLightsOn={areLightsOn}
         onLightSwitchClick={handleLightSwitchClick}
       />
+      <RandomlyPositionedLetter letter="S" />
+      <RandomlyPositionedLetter letter="E" />
+      <RandomlyPositionedLetter letter="Q" />
+      <RandomlyPositionedLetter letter="U" />
+      <RandomlyPositionedLetter letter="A" />
+      <RandomlyPositionedLetter letter="N" />
+      <RandomlyPositionedLetter letter="C" />
+      <RandomlyPositionedLetter letter="E" />
     </Center>
   );
 };
