@@ -10,6 +10,7 @@ const LightSwitch: FC<LightSwitchProps> = ({
     <Image
       src={areLightsOn ? '/pngs/on.png' : '/pngs/off.png'}
       alt="light switch"
+      ignoreFallback
       onClick={onLightSwitchClick}
     />
   </Box>
