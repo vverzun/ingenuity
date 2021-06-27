@@ -7,7 +7,7 @@ import type { RandomlyPositionedLetterProps } from './types';
 const SWITCHER_HEIGHT = 300;
 const SWITCHER_WIDTH = 300;
 const LETTER_HEIGHT = 60;
-const LETTER_WIDTH = 24;
+const LETTER_WIDTH = 25;
 
 const RandomlyPositionedLetter: FC<RandomlyPositionedLetterProps> = ({
   letter,
@@ -18,7 +18,7 @@ const RandomlyPositionedLetter: FC<RandomlyPositionedLetterProps> = ({
     0,
     (height - SWITCHER_HEIGHT) / 2 - LETTER_HEIGHT
   );
-  const randormRightOffset = getRandomNumberInclusively(
+  const randomRightOffset = getRandomNumberInclusively(
     0,
     (width - SWITCHER_WIDTH) / 2 - LETTER_WIDTH
   );
@@ -27,12 +27,12 @@ const RandomlyPositionedLetter: FC<RandomlyPositionedLetterProps> = ({
     <Text
       position="absolute"
       top={randomTopOffset}
-      right={randormRightOffset}
+      right={randomRightOffset}
       width="25px"
       fontSize="60px"
+      lineHeight="60px"
       textAlign="center"
       verticalAlign="middle"
-      lineHeight="60px"
       color="#fff"
     >
       {letter}
