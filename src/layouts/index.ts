@@ -1,1 +1,1 @@
-export { GameWithLight } from './GameWithLight';
+export { FirstPuzzle } from './FirstPuzzle';

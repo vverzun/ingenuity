@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Center } from '@chakra-ui/react';
-import { LightSwitch, RandomlyPositionedLetter } from '@components';
+import { LightSwitch } from '@components';
 import type { LightSwitchSound } from './types';
 
-const GameWithLight: FC = () => {
+const FirstPuzzle: FC = () => {
   const [areLightsOn, setAreLightsOn] = useState<boolean>(false);
   const [lightSwitchSound, setLightSwitchSound] =
     useState<LightSwitchSound | null>(null);
@@ -35,16 +35,8 @@ const GameWithLight: FC = () => {
         areLightsOn={areLightsOn}
         onLightSwitchClick={handleLightSwitchClick}
       />
-      <RandomlyPositionedLetter letter="S" />
-      <RandomlyPositionedLetter letter="E" />
-      <RandomlyPositionedLetter letter="Q" />
-      <RandomlyPositionedLetter letter="U" />
-      <RandomlyPositionedLetter letter="A" />
-      <RandomlyPositionedLetter letter="N" />
-      <RandomlyPositionedLetter letter="C" />
-      <RandomlyPositionedLetter letter="E" />
     </Center>
   );
 };
 
-export default GameWithLight;
+export default FirstPuzzle;
