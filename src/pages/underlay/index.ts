@@ -1,3 +1,3 @@
-import { FirstPuzzle } from '@layouts';
+import { FirstPuzzle } from '@puzzles';
 
 export default FirstPuzzle;
