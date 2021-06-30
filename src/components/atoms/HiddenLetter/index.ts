@@ -1,2 +1,2 @@
 export { default as HiddenLetter } from './HiddenLetter';
-export type { HiddenLetterProps } from './types';
+export type { HiddenLetterProps, Letter } from './types';
