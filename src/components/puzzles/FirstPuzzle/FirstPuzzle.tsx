@@ -18,6 +18,7 @@ const SECRET_WORD_LETTERS: Letter[] = [
 ];
 
 const FirstPuzzle: FC = () => {
+  const [isPuzzleSolved, setIsPuzzleSolved] = useState<boolean>(false);
   const [areLightsOn, setAreLightsOn] = useState<boolean>(true);
   const [enteredLettersIds, setEnteredLettersIds] = useState<string[]>([]);
 
@@ -25,8 +26,7 @@ const FirstPuzzle: FC = () => {
     setAreLightsOn((prevAreLightsOn) => !prevAreLightsOn);
 
     if (enteredLettersIds.length === SECRET_WORD_LETTERS.length) {
-      // eslint-disable-next-line no-console
-      console.log('You got me...');
+      setIsPuzzleSolved(true);
     }
   };
 
@@ -53,7 +53,7 @@ const FirstPuzzle: FC = () => {
     []
   );
 
-  return (
+  return isPuzzleSolved ? null : (
     <Center
       flexDirection="column"
       height="100vh"
