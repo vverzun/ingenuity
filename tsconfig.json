@@ -21,6 +21,8 @@
       "@molecules/*": ["src/components/molecules/*"],
       "@organisms": ["src/components/organisms"],
       "@organisms/*": ["src/components/organisms/*"],
+      "@contexts": ["src/contexts"],
+      "@contexts/*": ["src/contexts/*"],
       "@puzzles": ["src/components/puzzles"],
       "@puzzles/*": ["src/components/puzzles/*"],
       "@helpers": ["src/helpers"],
