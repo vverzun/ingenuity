@@ -23,10 +23,18 @@ const FirstPuzzle: FC = () => {
 
   const handleSwitcherClick = (): void => {
     setAreLightsOn((prevAreLightsOn) => !prevAreLightsOn);
+
+    if (enteredLettersIds.length === SECRET_WORD_LETTERS.length) {
+      // eslint-disable-next-line no-console
+      console.log('You got me...');
+    }
   };
 
   const handleLetterClick = ({ id, symbol }: Letter): void => {
-    if (!areLightsOn) {
+    if (
+      !areLightsOn ||
+      enteredLettersIds.length === SECRET_WORD_LETTERS.length
+    ) {
       return;
     }
 
