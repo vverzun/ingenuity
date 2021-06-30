@@ -1,1 +1,1 @@
-export {};
+export { SecretWordLetters } from './SecretWordLetters';
