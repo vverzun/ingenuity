@@ -4,13 +4,13 @@ import { FirstPuzzleContext } from '@contexts';
 import type { HiddenLetterProps } from './types';
 
 const HiddenLetter: FC<HiddenLetterProps> = ({ id, symbol, onLetterClick }) => {
-  const { areLightsOn, enteredLetters } = useContext(FirstPuzzleContext);
+  const { areLightsOn, enteredLettersIds } = useContext(FirstPuzzleContext);
 
   const onClick = (): void => {
     onLetterClick({ id, symbol });
   };
 
-  const isHidden = !enteredLetters.includes(id);
+  const isHidden = !enteredLettersIds.includes(id);
 
   return (
     <Center>

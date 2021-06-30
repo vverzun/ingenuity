@@ -19,7 +19,7 @@ const SECRET_WORD_LETTERS: Letter[] = [
 
 const FirstPuzzle: FC = () => {
   const [areLightsOn, setAreLightsOn] = useState<boolean>(true);
-  const [enteredLetters, setEnteredLetters] = useState<string[]>([]);
+  const [enteredLettersIds, setEnteredLettersIds] = useState<string[]>([]);
 
   const handleSwitcherClick = (): void => {
     setAreLightsOn((prevAreLightsOn) => !prevAreLightsOn);
@@ -31,11 +31,12 @@ const FirstPuzzle: FC = () => {
     }
 
     const { id: correctLetterId, symbol: correctLetterSymbol } =
-      SECRET_WORD_LETTERS[enteredLetters.length];
+      SECRET_WORD_LETTERS[enteredLettersIds.length];
+
     if (id === correctLetterId || symbol === correctLetterSymbol) {
-      setEnteredLetters([...enteredLetters, id]);
+      setEnteredLettersIds([...enteredLettersIds, id]);
     } else {
-      setEnteredLetters([]);
+      setEnteredLettersIds([]);
     }
   };
 
@@ -47,7 +48,7 @@ const FirstPuzzle: FC = () => {
   return (
     <Center height="100vh" backgroundColor={areLightsOn ? 'white' : 'black'}>
       <Switcher isOn={areLightsOn} onSwitcherClick={handleSwitcherClick} />
-      <FirstPuzzleContext.Provider value={{ areLightsOn, enteredLetters }}>
+      <FirstPuzzleContext.Provider value={{ areLightsOn, enteredLettersIds }}>
         <SecretWordLetters
           secretWordLetters={shuffledSecretWordLetters}
           onLetterClick={handleLetterClick}
