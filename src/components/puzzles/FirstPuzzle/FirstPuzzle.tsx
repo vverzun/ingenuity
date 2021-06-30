@@ -1,5 +1,5 @@
 import React, { FC, useMemo, useState } from 'react';
-import { Center } from '@chakra-ui/react';
+import { Box, Center, Flex } from '@chakra-ui/react';
 import { Switcher } from '@atoms';
 import { SecretWordLetters } from '@molecules';
 import { Letter } from '@atoms/types';
@@ -46,14 +46,22 @@ const FirstPuzzle: FC = () => {
   );
 
   return (
-    <Center height="100vh" backgroundColor={areLightsOn ? 'white' : 'black'}>
-      <Switcher isOn={areLightsOn} onSwitcherClick={handleSwitcherClick} />
-      <FirstPuzzleContext.Provider value={{ areLightsOn, enteredLettersIds }}>
-        <SecretWordLetters
-          secretWordLetters={shuffledSecretWordLetters}
-          onLetterClick={handleLetterClick}
-        />
-      </FirstPuzzleContext.Provider>
+    <Center
+      flexDirection="column"
+      height="100vh"
+      backgroundColor={areLightsOn ? 'white' : 'black'}
+    >
+      <Box marginBottom="60px">
+        <Switcher isOn={areLightsOn} onSwitcherClick={handleSwitcherClick} />
+      </Box>
+      <Flex alignSelf="stretch">
+        <FirstPuzzleContext.Provider value={{ areLightsOn, enteredLettersIds }}>
+          <SecretWordLetters
+            secretWordLetters={shuffledSecretWordLetters}
+            onLetterClick={handleLetterClick}
+          />
+        </FirstPuzzleContext.Provider>
+      </Flex>
     </Center>
   );
 };

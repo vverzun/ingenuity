@@ -1,5 +1,5 @@
 import React, { FC, memo, useContext } from 'react';
-import { Center, Text } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import { FirstPuzzleContext } from '@contexts';
 import type { HiddenLetterProps } from './types';
 
@@ -13,7 +13,7 @@ const HiddenLetter: FC<HiddenLetterProps> = ({ id, symbol, onLetterClick }) => {
   const isHidden = !enteredLettersIds.includes(id);
 
   return (
-    <Center>
+    <Box>
       <Text
         fontSize="60px"
         color={isHidden ? 'white' : 'black'}
@@ -25,7 +25,7 @@ const HiddenLetter: FC<HiddenLetterProps> = ({ id, symbol, onLetterClick }) => {
       >
         {symbol}
       </Text>
-    </Center>
+    </Box>
   );
 };
 
