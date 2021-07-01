@@ -1,6 +1,6 @@
 import React, { FC, useMemo, useState } from 'react';
 import { Box, Center, Flex } from '@chakra-ui/react';
-import { Switcher } from '@atoms';
+import { Switcher, TypingAnimationText } from '@atoms';
 import { SecretWordLetters } from '@molecules';
 import { Letter } from '@atoms/types';
 import { FirstPuzzleContext } from '@contexts';
@@ -53,23 +53,34 @@ const FirstPuzzle: FC = () => {
     []
   );
 
-  return isPuzzleSolved ? null : (
+  return (
     <Center
       flexDirection="column"
       height="100vh"
       backgroundColor={areLightsOn ? 'white' : 'black'}
     >
-      <Box marginBottom="60px">
-        <Switcher isOn={areLightsOn} onSwitcherClick={handleSwitcherClick} />
-      </Box>
-      <Flex alignSelf="stretch">
-        <FirstPuzzleContext.Provider value={{ areLightsOn, enteredLettersIds }}>
-          <SecretWordLetters
-            secretWordLetters={shuffledSecretWordLetters}
-            onLetterClick={handleLetterClick}
-          />
-        </FirstPuzzleContext.Provider>
-      </Flex>
+      {isPuzzleSolved ? (
+        <TypingAnimationText text="That was easy...huh?" />
+      ) : (
+        <>
+          <Box marginBottom="60px">
+            <Switcher
+              isOn={areLightsOn}
+              onSwitcherClick={handleSwitcherClick}
+            />
+          </Box>
+          <Flex alignSelf="stretch">
+            <FirstPuzzleContext.Provider
+              value={{ areLightsOn, enteredLettersIds }}
+            >
+              <SecretWordLetters
+                secretWordLetters={shuffledSecretWordLetters}
+                onLetterClick={handleLetterClick}
+              />
+            </FirstPuzzleContext.Provider>
+          </Flex>
+        </>
+      )}
     </Center>
   );
 };
