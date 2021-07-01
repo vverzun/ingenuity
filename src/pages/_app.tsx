@@ -1,0 +1,23 @@
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { FC } from 'react';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { ChakraProvider } from '@chakra-ui/react';
+import { theme } from '@styles';
+import '@fontsource/bebas-neue';
+
+const App: FC<AppProps> = ({ Component, pageProps }) => {
+  return (
+    <>
+      <Head>
+        <title>Ingenuity</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </>
+  );
+};
+
+export default App;

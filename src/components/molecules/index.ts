@@ -1,0 +1,1 @@
+export { SecretWordLetters } from './SecretWordLetters';

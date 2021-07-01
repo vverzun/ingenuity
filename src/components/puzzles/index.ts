@@ -1,0 +1,1 @@
+export { FirstPuzzle } from './FirstPuzzle';
