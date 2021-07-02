@@ -10,7 +10,7 @@ const TypingAnimationText: FC<TypingAnimationTextProps> = ({ text }) => {
 
   const blinkingCaret = keyframes`
     from, to { border-color: transparent }
-    50% { border-color: black; }
+    50% { border-color: white; }
   `;
 
   return (
