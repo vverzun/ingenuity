@@ -26,23 +26,22 @@ const Switcher: FC<SwitcherProps> = ({ isOn, onSwitcherClick }) => {
 
   return (
     <>
-      {isOn ? (
-        <Img
-          width="100px"
-          height="auto"
-          src="/svgs/on.svg"
-          alt="light switch"
-          onClick={onClick}
-        />
-      ) : (
-        <Img
-          width="100px"
-          height="auto"
-          src={isOn ? '/svgs/on.svg' : '/svgs/off.svg'}
-          alt="light switch"
-          onClick={onClick}
-        />
-      )}
+      <Img
+        width="100px"
+        height="auto"
+        display={isOn ? 'block' : 'none'}
+        src="/svgs/on.svg"
+        alt="light switch"
+        onClick={onClick}
+      />
+      <Img
+        width="100px"
+        height="auto"
+        display={isOn ? 'none' : 'block'}
+        src={isOn ? '/svgs/on.svg' : '/svgs/off.svg'}
+        alt="light switch"
+        onClick={onClick}
+      />
     </>
   );
 };
