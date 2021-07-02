@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import Image from 'next/image';
+import { Img } from '@chakra-ui/react';
 import type { SwitcherSound, SwitcherProps } from './types';
 
 const Switcher: FC<SwitcherProps> = ({ isOn, onSwitcherClick }) => {
@@ -25,9 +25,8 @@ const Switcher: FC<SwitcherProps> = ({ isOn, onSwitcherClick }) => {
   };
 
   return (
-    <Image
-      width={100}
-      height={158}
+    <Img
+      width="100%"
       src={isOn ? '/svgs/on.svg' : '/svgs/off.svg'}
       alt="light switch"
       onClick={onClick}
