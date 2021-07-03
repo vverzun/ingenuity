@@ -16,6 +16,7 @@ const HiddenLetter: FC<HiddenLetterProps> = ({ id, symbol, onLetterClick }) => {
     <Text
       fontSize="60px"
       color={isHidden ? 'white' : 'black'}
+      transition="color 500ms ease-in-out"
       _hover={{
         cursor: 'pointer',
         color: areLightsOn && isHidden ? 'black' : '',
