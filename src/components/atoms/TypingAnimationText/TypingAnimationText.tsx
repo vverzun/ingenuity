@@ -4,28 +4,52 @@ import { TypingAnimationTextProps } from './types';
 
 const TypingAnimationText: FC<TypingAnimationTextProps> = ({ text }) => {
   const typing = keyframes`
-    from { width: 0 }
-    to { width: 300px }
+    to {
+      left: 100%;
+    }
   `;
 
-  const blinkingCaret = keyframes`
-    from, to { border-color: transparent }
-    50% { border-color: white; }
+  const blink = keyframes`
+    from, to {
+      background: transparent;
+    }
+
+    50% {
+      background: white;
+    }
   `;
 
   return (
     <Text
-      fontSize="30px"
+      width="max-content"
+      position="relative"
       color="white"
-      overflow="hidden"
-      borderRight=".15em solid black"
-      whiteSpace="nowrap"
-      margin="0 auto"
-      letterSpacing=".15em"
-      animation={`
-        ${typing} 1.5s steps(20, end),
-        ${blinkingCaret} .75s step-end infinite
-      `}
+      fontSize="clamp(0.75rem, 3vw + 0.75rem, 4rem)"
+      letterSpacing="0.45em"
+      _before={{
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        background: 'black',
+        animation: `${typing} 1.5s steps(${text.length}) 1s forwards`,
+      }}
+      _after={{
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        width: '0.1em',
+        background: 'white',
+        animation: `
+          ${typing} 1.5s steps(${text.length}) 1s forwards,
+          ${blink} .5s step-end infinite
+        `,
+      }}
     >
       {text}
     </Text>
