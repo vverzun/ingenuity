@@ -1,1 +1,1 @@
-export type { FirstPuzzleContextValue } from './FirstPuzzleContext';
+export type { UnderlayPuzzleContextValue } from './UnderlayPuzzleContext';

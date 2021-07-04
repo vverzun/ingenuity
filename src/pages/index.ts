@@ -1,3 +1,3 @@
-import { FirstPuzzle } from '@puzzles';
+import { UnderlayPuzzle } from '@puzzles';
 
-export default FirstPuzzle;
+export default UnderlayPuzzle;

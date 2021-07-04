@@ -4,10 +4,10 @@ import { Switcher, TypingAnimationText } from '@atoms';
 import { SecretWordLetters } from '@molecules';
 import { Letter } from '@atoms/types';
 import { SECRET_WORD_LETTERS } from '@constants';
-import { FirstPuzzleContext } from '@contexts';
+import { UnderlayPuzzleContext } from '@contexts';
 import { shuffleArray } from '@helpers';
 
-const FirstPuzzle: FC = () => {
+const UnderlayPuzzle: FC = () => {
   const [isPuzzleSolved, setIsPuzzleSolved] = useState<boolean>(false);
   const [areLightsOn, setAreLightsOn] = useState<boolean>(true);
   const [enteredLettersIds, setEnteredLettersIds] = useState<string[]>([]);
@@ -58,14 +58,14 @@ const FirstPuzzle: FC = () => {
             />
           </Box>
           <Flex justifyContent="space-evenly" alignSelf="stretch">
-            <FirstPuzzleContext.Provider
+            <UnderlayPuzzleContext.Provider
               value={{ areLightsOn, enteredLettersIds }}
             >
               <SecretWordLetters
                 secretWordLetters={shuffledSecretWordLetters}
                 onLetterClick={handleLetterClick}
               />
-            </FirstPuzzleContext.Provider>
+            </UnderlayPuzzleContext.Provider>
           </Flex>
         </>
       )}
@@ -73,4 +73,4 @@ const FirstPuzzle: FC = () => {
   );
 };
 
-export default FirstPuzzle;
+export default UnderlayPuzzle;
