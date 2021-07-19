@@ -17,6 +17,9 @@ const HiddenLetter: FC<HiddenLetterProps> = ({ id, symbol, onLetterClick }) => {
       fontSize="60px"
       color={isHidden ? 'white' : 'black'}
       transition="color 500ms ease-in-out"
+      sx={{
+        '-webkit-tap-highlight-color': 'rgba(0,0,0,0)',
+      }}
       _hover={{
         cursor: 'pointer',
         color: areLightsOn && isHidden ? 'black' : '',
