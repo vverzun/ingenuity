@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '@styles';
-import '@fontsource/bebas-neue';
+import '@fontsource/major-mono-display';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
