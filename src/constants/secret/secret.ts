@@ -1,4 +1,4 @@
-import { Letter } from '@atoms/types';
+import type { Letter } from '@atoms/types';
 
 export const SECRET_WORD_LETTERS: Letter[] = [
   // UNDERLAY_LETTERS

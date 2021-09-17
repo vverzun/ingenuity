@@ -1,6 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
+import type { FC } from 'react';
 import { keyframes, Text } from '@chakra-ui/react';
-import { TypingAnimationTextProps } from './types';
+import type { TypingAnimationTextProps } from './TypingAnimationText.types';
 
 const TypingAnimationText: FC<TypingAnimationTextProps> = ({ text }) => {
   const typing = keyframes`

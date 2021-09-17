@@ -1,8 +1,9 @@
-import React, { FC, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import type { FC } from 'react';
 import { Box, Center, Flex } from '@chakra-ui/react';
 import { Switcher, TypingAnimationText } from '@atoms';
 import { SecretWordLetters } from '@molecules';
-import { Letter } from '@atoms/types';
+import type { Letter } from '@atoms/types';
 import { SECRET_WORD_LETTERS } from '@constants';
 import { UnderlayPuzzleContext } from '@contexts';
 import { shuffleArray } from '@helpers';

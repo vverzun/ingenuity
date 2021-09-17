@@ -1,6 +1,7 @@
-import React, { FC, memo } from 'react';
+import React, { memo } from 'react';
+import type { FC } from 'react';
 import { HiddenLetter } from '@atoms';
-import type { SecretWordLettersProps } from './types';
+import type { SecretWordLettersProps } from './SecretWordLetters.types';
 
 const SecretWordLetters: FC<SecretWordLettersProps> = ({
   secretWordLetters,

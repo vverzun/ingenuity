@@ -1,7 +1,8 @@
-import React, { FC, memo, useContext } from 'react';
+import React, { memo, useContext } from 'react';
+import type { FC } from 'react';
 import { Text } from '@chakra-ui/react';
 import { UnderlayPuzzleContext } from '@contexts';
-import type { HiddenLetterProps } from './types';
+import type { HiddenLetterProps } from './HiddenLetter.types';
 
 const HiddenLetter: FC<HiddenLetterProps> = ({ id, symbol, onLetterClick }) => {
   const { areLightsOn, enteredLettersIds } = useContext(UnderlayPuzzleContext);
