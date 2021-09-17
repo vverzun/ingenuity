@@ -22,10 +22,9 @@ const TypingAnimationText: FC<TypingAnimationTextProps> = ({ text }) => {
 
   return (
     <Text
-      width="max-content"
       position="relative"
       color="white"
-      fontSize="clamp(0.75rem, 3vw + 0.75rem, 4rem)"
+      fontSize="3vw"
       letterSpacing="0.45em"
       _before={{
         content: '""',
@@ -35,7 +34,7 @@ const TypingAnimationText: FC<TypingAnimationTextProps> = ({ text }) => {
         bottom: 0,
         left: 0,
         background: 'black',
-        animation: `${typing} 1.5s steps(${text.length}) 1s forwards`,
+        animation: `${typing} 1.5s steps(${text.length}) forwards`,
       }}
       _after={{
         content: '""',
@@ -44,11 +43,11 @@ const TypingAnimationText: FC<TypingAnimationTextProps> = ({ text }) => {
         right: 0,
         bottom: 0,
         left: 0,
-        width: '0.1em',
+        width: '0.05em',
         background: 'white',
         animation: `
-          ${typing} 1.5s steps(${text.length}) 1s forwards,
-          ${blink} .5s step-end infinite
+          ${typing} 1.5s steps(${text.length}) forwards,
+          ${blink} .5s 2s step-end infinite
         `,
       }}
     >
