@@ -8,8 +8,8 @@
     "start": "next start",
     "prepare": "husky install",
     "pre-commit": "lint-staged",
-    "eslint:all": "eslint --ext .ts,.tsx --fix",
-    "prettier:all": "prettier --write \"./**/*.{ts,tsx}\""
+    "eslint:all": "eslint --ext .ts,.tsx --fix .",
+    "prettier:all": "prettier --write \"./**/*.{ts,tsx}\" ."
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.4",
