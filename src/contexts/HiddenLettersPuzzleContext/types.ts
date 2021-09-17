@@ -1,4 +1,4 @@
-export type UnderlayPuzzleContextValue = {
+export type HiddenLettersPuzzleContextValue = {
   areLightsOn: boolean;
   enteredLettersIds: string[];
 };

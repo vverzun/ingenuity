@@ -1,1 +1,1 @@
-export { SECRET_WORD_LETTERS } from './secret';
+export { HIDDEN_LETTERS } from './secret';
