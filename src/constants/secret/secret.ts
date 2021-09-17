@@ -1,7 +1,6 @@
 import type { Letter } from '@atoms/types';
 
-export const SECRET_WORD_LETTERS: Letter[] = [
-  // UNDERLAY_LETTERS
+export const HIDDEN_LETTERS: Letter[] = [
   { id: '89641f4e-4560-4798-b390-301d6f76006a', symbol: 'S' },
   { id: 'f25cfab8-31f3-46a0-abb0-f6bf96584779', symbol: 'E' },
   { id: '8adc2866-c11b-4e1d-8e24-4318ce059f7d', symbol: 'Q' },

@@ -1,14 +1,13 @@
 import React, { useMemo, useState } from 'react';
 import type { FC } from 'react';
 import { Box, Center, Flex } from '@chakra-ui/react';
-import { Switcher, TypingAnimationText } from '@atoms';
-import { SecretWordLetters } from '@molecules';
+import { HiddenLetter, Switcher, TypingAnimationText } from '@atoms';
 import type { Letter } from '@atoms/types';
-import { SECRET_WORD_LETTERS } from '@constants';
-import { UnderlayPuzzleContext } from '@contexts';
+import { HIDDEN_LETTERS } from '@constants';
+import { HiddenLettersPuzzleContext } from '@contexts';
 import { shuffleArray } from '@helpers';
 
-const UnderlayPuzzle: FC = () => {
+const HiddenLettersPuzzle: FC = () => {
   const [isPuzzleSolved, setIsPuzzleSolved] = useState<boolean>(false);
   const [areLightsOn, setAreLightsOn] = useState<boolean>(true);
   const [enteredLettersIds, setEnteredLettersIds] = useState<string[]>([]);
@@ -16,20 +15,17 @@ const UnderlayPuzzle: FC = () => {
   const handleSwitcherClick = (): void => {
     setAreLightsOn((prevAreLightsOn) => !prevAreLightsOn);
 
-    if (enteredLettersIds.length === SECRET_WORD_LETTERS.length) {
+    if (enteredLettersIds.length === HIDDEN_LETTERS.length) {
       setIsPuzzleSolved(true);
     }
   };
 
   const handleLetterClick = ({ id, symbol }: Letter): void => {
-    if (
-      !areLightsOn ||
-      enteredLettersIds.length === SECRET_WORD_LETTERS.length
-    ) {
+    if (!areLightsOn || enteredLettersIds.length === HIDDEN_LETTERS.length) {
       return;
     }
 
-    const correctLetter = SECRET_WORD_LETTERS[enteredLettersIds.length];
+    const correctLetter = HIDDEN_LETTERS[enteredLettersIds.length];
 
     if (id === correctLetter.id || symbol === correctLetter.symbol) {
       setEnteredLettersIds([...enteredLettersIds, id]);
@@ -38,9 +34,10 @@ const UnderlayPuzzle: FC = () => {
     }
   };
 
-  const shuffledSecretWordLetters = useMemo(() => {
-    return shuffleArray<Letter>(SECRET_WORD_LETTERS);
-  }, []);
+  const shuffledHiddenLetters = useMemo(
+    () => shuffleArray<Letter>(HIDDEN_LETTERS),
+    []
+  );
 
   return (
     <Center
@@ -59,14 +56,18 @@ const UnderlayPuzzle: FC = () => {
             />
           </Box>
           <Flex justifyContent="space-evenly" alignSelf="stretch">
-            <UnderlayPuzzleContext.Provider
+            <HiddenLettersPuzzleContext.Provider
               value={{ areLightsOn, enteredLettersIds }}
             >
-              <SecretWordLetters
-                secretWordLetters={shuffledSecretWordLetters}
-                onLetterClick={handleLetterClick}
-              />
-            </UnderlayPuzzleContext.Provider>
+              {shuffledHiddenLetters.map(({ id, symbol }) => (
+                <HiddenLetter
+                  key={id}
+                  id={id}
+                  symbol={symbol}
+                  onLetterClick={handleLetterClick}
+                />
+              ))}
+            </HiddenLettersPuzzleContext.Provider>
           </Flex>
         </>
       )}
@@ -74,4 +75,4 @@ const UnderlayPuzzle: FC = () => {
   );
 };
 
-export default UnderlayPuzzle;
+export default HiddenLettersPuzzle;

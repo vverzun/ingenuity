@@ -1,11 +1,13 @@
 import React, { memo, useContext } from 'react';
 import type { FC } from 'react';
 import { Text } from '@chakra-ui/react';
-import { UnderlayPuzzleContext } from '@contexts';
+import { HiddenLettersPuzzleContext } from '@contexts';
 import type { HiddenLetterProps } from './HiddenLetter.types';
 
 const HiddenLetter: FC<HiddenLetterProps> = ({ id, symbol, onLetterClick }) => {
-  const { areLightsOn, enteredLettersIds } = useContext(UnderlayPuzzleContext);
+  const { areLightsOn, enteredLettersIds } = useContext(
+    HiddenLettersPuzzleContext
+  );
 
   const onClick = (): void => {
     onLetterClick({ id, symbol });

@@ -27,7 +27,7 @@ const Switcher: FC<SwitcherProps> = ({ isOn, onSwitcherClick }) => {
 
   return (
     <Img
-      width="100%"
+      width="50px"
       src={isOn ? '/svgs/on.svg' : '/svgs/off.svg'}
       alt="light switch"
       onClick={onClick}

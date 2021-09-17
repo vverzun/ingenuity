@@ -1,1 +1,1 @@
-export { UnderlayPuzzleContext } from './UnderlayPuzzleContext';
+export { HiddenLettersPuzzleContext } from './HiddenLettersPuzzleContext';

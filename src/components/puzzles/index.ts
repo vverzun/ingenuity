@@ -1,2 +1,2 @@
 export { MysticSquarePuzzle } from './MysticSquarePuzzle';
-export { UnderlayPuzzle } from './UnderlayPuzzle';
+export { HiddenLettersPuzzle } from './HiddenLettersPuzzle';
