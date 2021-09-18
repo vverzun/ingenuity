@@ -1,3 +1,3 @@
-import { HiddenLettersPuzzle } from '@puzzles';
+import { MysticSquarePuzzle } from '@puzzles';
 
-export default HiddenLettersPuzzle;
+export default MysticSquarePuzzle;

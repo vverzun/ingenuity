@@ -4,33 +4,40 @@ import { Flex } from '@chakra-ui/react';
 import type { MysticSquareTileProps } from './MysticSquareTile.types';
 
 const MysticSquareTile: FC<MysticSquareTileProps> = ({
-  x,
   y,
+  x,
   symbol,
   onMysticSquareTileClick,
 }) => {
   const onClick = (): void => {
-    onMysticSquareTileClick({ x, y });
+    onMysticSquareTileClick({ y, x });
   };
 
   return (
     <Flex
-      w="50px"
-      h="50px"
+      width="50px"
+      height="50px"
       alignItems="center"
       justifyContent="center"
-      fontSize="30px"
-      color="white"
-      bg="black"
       cursor="pointer"
-      _active={{
-        w: '45px',
-        h: '45px',
-        fontSize: '25px',
-      }}
       onClick={onClick}
     >
-      {symbol}
+      <Flex
+        width="100%"
+        height="100%"
+        alignItems="center"
+        justifyContent="center"
+        fontSize="30px"
+        color="white"
+        bg="black"
+        _active={{
+          w: '40px',
+          h: '40px',
+          fontSize: '25px',
+        }}
+      >
+        {symbol}
+      </Flex>
     </Flex>
   );
 };
