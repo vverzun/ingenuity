@@ -1,3 +1,3 @@
-import { MysticSquarePuzzle } from '@puzzles';
+import { Intro } from '@puzzles';
 
-export default MysticSquarePuzzle;
+export default Intro;

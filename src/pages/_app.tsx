@@ -7,18 +7,16 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '@styles';
 import '@fontsource/major-mono-display';
 
-const App: FC<AppProps> = ({ Component, pageProps }) => {
-  return (
-    <>
-      <Head>
-        <title>Ingenuity</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
-      </ChakraProvider>
-    </>
-  );
-};
+const App: FC<AppProps> = ({ Component, pageProps }) => (
+  <>
+    <Head>
+      <title>Ingenuity</title>
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+    <ChakraProvider theme={theme}>
+      <Component {...pageProps} />
+    </ChakraProvider>
+  </>
+);
 
 export default App;
