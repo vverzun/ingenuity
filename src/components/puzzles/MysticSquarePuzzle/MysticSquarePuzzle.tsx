@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react';
 import type { FC } from 'react';
-import { Center, Grid } from '@chakra-ui/react';
+import { Center, Grid, useColorModeValue } from '@chakra-ui/react';
 import { MysticSquareTile, Switcher } from '@atoms';
 import type { Coordinates } from '@atoms/types';
 import { MYSTIC_SQUARE_TILES } from '@constants';
@@ -62,6 +62,9 @@ const MysticSquarePuzzle: FC = () => {
     }, 5000);
   };
 
+  const gridBackgroundColor = useColorModeValue('white', 'black');
+  const gridBorderColor = useColorModeValue('black', 'white');
+
   return (
     <Center height="100vh" flexDirection="column">
       <Grid
@@ -72,8 +75,8 @@ const MysticSquarePuzzle: FC = () => {
         gap="5px"
         marginBottom="60px"
         padding="5px"
-        border="5px solid black"
-        background="white"
+        border={`5px solid ${gridBorderColor}`}
+        backgroundColor={gridBackgroundColor}
       >
         {mysticSquareState.mysticSquareTiles.map((row, y) =>
           row.map((letter, x) => (

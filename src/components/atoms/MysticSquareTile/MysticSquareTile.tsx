@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import type { FC } from 'react';
-import { Flex } from '@chakra-ui/react';
+import { Flex, useColorModeValue } from '@chakra-ui/react';
 import type { MysticSquareTileProps } from './MysticSquareTile.types';
 
 const MysticSquareTile: FC<MysticSquareTileProps> = ({
@@ -9,6 +9,9 @@ const MysticSquareTile: FC<MysticSquareTileProps> = ({
   symbol,
   onMysticSquareTileClick,
 }) => {
+  const color = useColorModeValue('white', 'black');
+  const backgroundColor = useColorModeValue('black', 'white');
+
   const onClick = (): void => {
     onMysticSquareTileClick({ y, x });
   };
@@ -28,8 +31,8 @@ const MysticSquareTile: FC<MysticSquareTileProps> = ({
         alignItems="center"
         justifyContent="center"
         fontSize="30px"
-        color="white"
-        bg="black"
+        color={color}
+        backgroundColor={backgroundColor}
         _active={{
           w: '40px',
           h: '40px',
