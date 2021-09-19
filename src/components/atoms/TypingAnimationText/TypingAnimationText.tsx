@@ -24,7 +24,7 @@ const TypingAnimationText: FC<TypingAnimationTextProps> = ({ text }) => {
     <Text
       position="relative"
       color="white"
-      fontSize="3vw"
+      fontSize="3.5vw"
       letterSpacing="0.45em"
       _before={{
         content: '""',
