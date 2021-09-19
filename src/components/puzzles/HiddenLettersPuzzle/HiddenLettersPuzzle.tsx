@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import type { FC } from 'react';
-import { Box, Center, Fade, Flex, useColorMode } from '@chakra-ui/react';
+import { Box, Center, Flex, useColorMode } from '@chakra-ui/react';
 import { HiddenLetter, Switcher, TypingAnimationText } from '@atoms';
 import type { Letter } from '@atoms/types';
 import { HIDDEN_LETTERS } from '@constants';
@@ -53,9 +53,10 @@ const HiddenLettersPuzzle: FC = () => {
           <Box marginBottom="60px">
             <TypingAnimationText text="That was easy... huh?" />
           </Box>
-          <Fade in transition={{ enter: { delay: 3, duration: 1.5 } }}>
-            <Switcher onSwitcherClick={handleSwitcherClick} />
-          </Fade>
+          <Switcher
+            withDelayedFadeInAnimation
+            onSwitcherClick={handleSwitcherClick}
+          />
         </>
       ) : (
         <>

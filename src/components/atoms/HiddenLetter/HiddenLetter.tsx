@@ -21,7 +21,7 @@ const HiddenLetter: FC<HiddenLetterProps> = ({
     <Text
       fontSize="60px"
       color={isHidden ? 'white' : 'black'}
-      transition="color 500ms ease-in-out"
+      transition="color 0.5s ease-in-out"
       sx={{
         '-webkit-tap-highlight-color': 'rgba(0,0,0,0)',
       }}

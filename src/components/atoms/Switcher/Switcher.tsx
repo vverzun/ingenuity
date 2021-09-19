@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import type { FC } from 'react';
-import { Img, useColorMode } from '@chakra-ui/react';
-import type { SwitcherSound, SwitcherProps } from './Switcher.types';
+import { Fade, Img, useColorMode } from '@chakra-ui/react';
+import { FADE_DELAY, FADE_DURATION } from '@constants';
+import { ConditionalFade } from '../ConditionalFade';
+import type { SwitcherProps, SwitcherSound } from './Switcher.types';
 
-const Switcher: FC<SwitcherProps> = ({ onSwitcherClick }) => {
+const Switcher: FC<SwitcherProps> = ({
+  withDelayedFadeInAnimation,
+  onSwitcherClick,
+}) => {
   const [switcherSound, setSwitcherSound] = useState<SwitcherSound | null>(
     null
   );
@@ -29,14 +34,26 @@ const Switcher: FC<SwitcherProps> = ({ onSwitcherClick }) => {
   };
 
   return (
-    <Img
-      src={colorMode === 'light' ? '/svgs/on.svg' : '/svgs/off.svg'}
-      alt="light switch"
-      width="50px"
-      cursor="pointer"
-      onClick={onClick}
-    />
+    <ConditionalFade
+      condition={withDelayedFadeInAnimation ?? false}
+      container={(children) => (
+        <Fade
+          in
+          transition={{ enter: { delay: FADE_DELAY, duration: FADE_DURATION } }}
+        >
+          {children}
+        </Fade>
+      )}
+    >
+      <Img
+        src={colorMode === 'light' ? '/svgs/on.svg' : '/svgs/off.svg'}
+        alt="light switch"
+        width="50px"
+        cursor="pointer"
+        onClick={onClick}
+      />
+    </ConditionalFade>
   );
 };
 
-export default Switcher;
+export default memo(Switcher);

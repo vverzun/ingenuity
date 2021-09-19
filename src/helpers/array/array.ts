@@ -1,4 +1,4 @@
-import { getRandomNumber } from '@helpers';
+import { getRandomNumber } from '../random';
 
 export const shuffleArray = <T>(array: T[]): T[] => {
   const shuffledArray = [...array];

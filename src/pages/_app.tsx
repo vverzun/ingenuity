@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChakraProvider } from '@chakra-ui/react';
+import { FADE_DURATION } from '@constants';
 import { theme } from '@styles';
 import '@fontsource/major-mono-display';
 
@@ -34,7 +35,7 @@ const App: FC<AppProps> = ({ Component, pageProps, router }) => {
             initial="initial"
             animate="animate"
             exit="exit"
-            transition={{ duration: 1.5 }}
+            transition={{ duration: FADE_DURATION }}
             variants={routeChangeAnimationVariants}
           >
             <Component {...pageProps} />

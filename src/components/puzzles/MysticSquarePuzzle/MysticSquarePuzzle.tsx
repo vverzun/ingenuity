@@ -87,7 +87,10 @@ const MysticSquarePuzzle: FC = () => {
           ))
         )}
       </Grid>
-      <Switcher onSwitcherClick={handleSwitcherClick} />
+      <Switcher
+        withDelayedFadeInAnimation
+        onSwitcherClick={handleSwitcherClick}
+      />
     </Center>
   );
 };
