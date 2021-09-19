@@ -1,1 +1,2 @@
-export type { ShiftTilesParams, ShiftTilesReturnType } from './tiles';
+export type { ShiftTilesParams } from './tiles';
+export type { GetRandomNumberParams } from './random';

@@ -1,2 +1,3 @@
-export { getRandomNumberInclusively, shuffleArray } from './array';
-export { shiftTiles } from './tiles';
+export { shuffleArray } from './array';
+export { getRandomNumber } from './random';
+export { getRandomTileCoordinates, shiftTiles } from './tiles';

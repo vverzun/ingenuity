@@ -1,2 +1,2 @@
-export { shiftTiles } from './tiles';
-export type { ShiftTilesParams, ShiftTilesReturnType } from './tiles.types';
+export { getRandomTileCoordinates, shiftTiles } from './tiles';
+export type { ShiftTilesParams } from './tiles.types';

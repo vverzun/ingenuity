@@ -5,7 +5,3 @@ export type ShiftTilesParams = {
   clickedTileCoordinates: Coordinates;
   mysticSquareTiles: Array<Letter[]>;
 };
-
-export type ShiftTilesReturnType = {
-  mysticSquareTilesToSet: Array<Letter[]>;
-};
