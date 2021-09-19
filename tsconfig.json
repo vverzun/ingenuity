@@ -20,8 +20,6 @@
       "@puzzles": ["src/components/puzzles"],
       "@puzzles/*": ["src/components/puzzles/*"],
       "@constants": ["src/constants"],
-      "@contexts": ["src/contexts"],
-      "@contexts/*": ["src/contexts/*"],
       "@helpers": ["src/helpers"],
       "@helpers/*": ["src/helpers/*"],
       "@hooks": ["src/hooks"],
