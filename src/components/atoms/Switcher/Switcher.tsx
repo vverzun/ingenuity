@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import type { FC } from 'react';
-import { Img } from '@chakra-ui/react';
+import { Img, useColorMode } from '@chakra-ui/react';
 import type { SwitcherSound, SwitcherProps } from './Switcher.types';
 
-const Switcher: FC<SwitcherProps> = ({ isOn, onSwitcherClick }) => {
+const Switcher: FC<SwitcherProps> = ({ onSwitcherClick }) => {
   const [switcherSound, setSwitcherSound] = useState<SwitcherSound | null>(
     null
   );
+
+  const { colorMode, toggleColorMode } = useColorMode();
 
   useEffect(() => {
     setSwitcherSound({
@@ -16,20 +18,22 @@ const Switcher: FC<SwitcherProps> = ({ isOn, onSwitcherClick }) => {
   }, []);
 
   const onClick = (): void => {
-    if (isOn) {
+    if (colorMode === 'light') {
       switcherSound?.turnOff.play();
     } else {
       switcherSound?.turnOn.play();
     }
 
     onSwitcherClick();
+    toggleColorMode();
   };
 
   return (
     <Img
-      width="50px"
-      src={isOn ? '/svgs/on.svg' : '/svgs/off.svg'}
+      src={colorMode === 'light' ? '/svgs/on.svg' : '/svgs/off.svg'}
       alt="light switch"
+      width="50px"
+      cursor="pointer"
       onClick={onClick}
     />
   );

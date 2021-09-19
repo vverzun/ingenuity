@@ -4,6 +4,5 @@ export type SwitcherSound = {
 };
 
 export type SwitcherProps = {
-  isOn: boolean;
   onSwitcherClick: () => void;
 };
