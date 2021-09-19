@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import type { FC } from 'react';
 import { Center, Grid } from '@chakra-ui/react';
-import { MYSTIC_SQUARE_TILES } from '@constants';
-import { MysticSquareTile } from '@atoms';
+import { MysticSquareTile, Switcher } from '@atoms';
 import type { Coordinates } from '@atoms/types';
-import { shiftTiles } from '@helpers';
+import { MYSTIC_SQUARE_TILES } from '@constants';
+import { getRandomTileCoordinates, shiftTiles } from '@helpers';
 import type { MysticSquareState } from './MysticSquarePuzzle.types';
 
 const MysticSquarePuzzle: FC = () => {
+  const [isTilesShuffled, setIsTilesShuffled] = useState<boolean>(false);
   const [mysticSquareState, setMysticSquareState] = useState<MysticSquareState>(
     {
       mysticSquareTiles: MYSTIC_SQUARE_TILES,
@@ -18,42 +19,58 @@ const MysticSquarePuzzle: FC = () => {
     }
   );
 
+  const isTilesShuffledRef = useRef(isTilesShuffled);
+  isTilesShuffledRef.current = isTilesShuffled;
+  const mysticSquareStateRef = useRef(mysticSquareState);
+  mysticSquareStateRef.current = mysticSquareState;
+
   const handleMysticSquareTileClick = (
     clickedTileCoordinates: Coordinates
   ): void => {
-    const { mysticSquareTiles, emptyTileCoordinates } = mysticSquareState;
-
-    const isEmptyTileClicked =
-      emptyTileCoordinates.y === clickedTileCoordinates.y &&
-      emptyTileCoordinates.x === clickedTileCoordinates.x;
-    const isTileBlocked =
-      emptyTileCoordinates.y !== clickedTileCoordinates.y &&
-      emptyTileCoordinates.x !== clickedTileCoordinates.x;
-
-    if (isEmptyTileClicked || isTileBlocked) {
-      return;
-    }
-
-    const { mysticSquareTilesToSet } = shiftTiles({
-      emptyTileCoordinates,
-      clickedTileCoordinates,
-      mysticSquareTiles,
-    });
+    const { mysticSquareTiles, emptyTileCoordinates } =
+      mysticSquareStateRef.current;
 
     setMysticSquareState({
-      mysticSquareTiles: mysticSquareTilesToSet,
+      mysticSquareTiles: shiftTiles({
+        emptyTileCoordinates,
+        clickedTileCoordinates,
+        mysticSquareTiles,
+      }),
       emptyTileCoordinates: clickedTileCoordinates,
     });
   };
 
+  const shuffleTiles = useCallback(() => {
+    if (isTilesShuffledRef.current) {
+      return;
+    }
+
+    handleMysticSquareTileClick(
+      getRandomTileCoordinates(
+        mysticSquareStateRef.current.emptyTileCoordinates
+      )
+    );
+
+    setTimeout(shuffleTiles, 0);
+  }, []);
+
+  const handleSwitcherClick = (): void => {
+    shuffleTiles();
+
+    setTimeout(() => {
+      setIsTilesShuffled(true);
+    }, 5000);
+  };
+
   return (
-    <Center height="100vh">
+    <Center height="100vh" flexDirection="column">
       <Grid
         alignItems="center"
         justifyItems="center"
         templateColumns="repeat(4, 1fr)"
         templateRows="repeat(4, 1fr)"
         gap="5px"
+        marginBottom="60px"
         padding="5px"
         border="5px solid black"
         background="white"
@@ -70,6 +87,7 @@ const MysticSquarePuzzle: FC = () => {
           ))
         )}
       </Grid>
+      <Switcher onSwitcherClick={handleSwitcherClick} />
     </Center>
   );
 };
