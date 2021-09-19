@@ -51,7 +51,7 @@ const HiddenLettersPuzzle: FC = () => {
       {isPuzzleSolved ? (
         <>
           <Box marginBottom="60px">
-            <TypingAnimationText text="It's dark in here." />
+            <TypingAnimationText text="That was easy... huh?" />
           </Box>
           <Fade in transition={{ enter: { delay: 3, duration: 1.5 } }}>
             <Switcher onSwitcherClick={handleSwitcherClick} />
