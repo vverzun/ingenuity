@@ -1,10 +1,11 @@
 import React, { useMemo, useState } from 'react';
 import type { FC } from 'react';
-import { Box, Center, Flex, useColorMode } from '@chakra-ui/react';
+import { Box, Center, Fade, Flex, useColorMode } from '@chakra-ui/react';
 import { HiddenLetter, Switcher, TypingAnimationText } from '@atoms';
 import type { Letter } from '@atoms/types';
 import { HIDDEN_LETTERS } from '@constants';
 import { shuffleArray } from '@helpers';
+import router from 'next/router';
 
 const HiddenLettersPuzzle: FC = () => {
   const [isPuzzleSolved, setIsPuzzleSolved] = useState<boolean>(false);
@@ -13,6 +14,11 @@ const HiddenLettersPuzzle: FC = () => {
   const { colorMode } = useColorMode();
 
   const handleSwitcherClick = (): void => {
+    if (isPuzzleSolved) {
+      router.replace('/mystic-square');
+      return;
+    }
+
     if (enteredLettersIds.length === HIDDEN_LETTERS.length) {
       setIsPuzzleSolved(true);
     }
@@ -43,7 +49,14 @@ const HiddenLettersPuzzle: FC = () => {
   return (
     <Center flexDirection="column" height="100vh">
       {isPuzzleSolved ? (
-        <TypingAnimationText text="That was easy...huh?" />
+        <>
+          <Box marginBottom="60px">
+            <TypingAnimationText text="It's dark in here." />
+          </Box>
+          <Fade in transition={{ enter: { delay: 3, duration: 1.5 } }}>
+            <Switcher onSwitcherClick={handleSwitcherClick} />
+          </Fade>
+        </>
       ) : (
         <>
           <Box marginBottom="60px">

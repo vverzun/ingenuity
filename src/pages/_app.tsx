@@ -34,7 +34,7 @@ const App: FC<AppProps> = ({ Component, pageProps, router }) => {
             initial="initial"
             animate="animate"
             exit="exit"
-            transition={{ duration: 2 }}
+            transition={{ duration: 1.5 }}
             variants={routeChangeAnimationVariants}
           >
             <Component {...pageProps} />

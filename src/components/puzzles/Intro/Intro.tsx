@@ -16,7 +16,7 @@ const Intro: FC = () => {
       <Box marginBottom="60px">
         <TypingAnimationText text="It's dark in here." />
       </Box>
-      <Fade in transition={{ enter: { delay: 3, duration: 2 } }}>
+      <Fade in transition={{ enter: { delay: 3, duration: 1.5 } }}>
         <Switcher onSwitcherClick={handleSwitcherClick} />
       </Fade>
     </Center>
