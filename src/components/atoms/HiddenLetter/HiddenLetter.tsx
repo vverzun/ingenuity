@@ -1,13 +1,15 @@
-import React, { memo, useContext } from 'react';
+import React, { memo } from 'react';
 import type { FC } from 'react';
-import { Text } from '@chakra-ui/react';
-import { HiddenLettersPuzzleContext } from '@contexts';
+import { Text, useColorMode } from '@chakra-ui/react';
 import type { HiddenLetterProps } from './HiddenLetter.types';
 
-const HiddenLetter: FC<HiddenLetterProps> = ({ id, symbol, onLetterClick }) => {
-  const { areLightsOn, enteredLettersIds } = useContext(
-    HiddenLettersPuzzleContext
-  );
+const HiddenLetter: FC<HiddenLetterProps> = ({
+  id,
+  symbol,
+  enteredLettersIds,
+  onLetterClick,
+}) => {
+  const { colorMode } = useColorMode();
 
   const onClick = (): void => {
     onLetterClick({ id, symbol });
@@ -25,7 +27,7 @@ const HiddenLetter: FC<HiddenLetterProps> = ({ id, symbol, onLetterClick }) => {
       }}
       _hover={{
         cursor: 'pointer',
-        color: areLightsOn && isHidden ? 'black' : '',
+        color: colorMode === 'light' && isHidden ? 'black' : undefined,
       }}
       onClick={onClick}
     >
