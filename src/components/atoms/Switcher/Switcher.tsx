@@ -1,4 +1,4 @@
-import { Fade, Img, useColorMode } from '@chakra-ui/react';
+import { Box, Fade, Img, useColorMode } from '@chakra-ui/react';
 import { FADE_DELAY, FADE_DURATION } from '@constants';
 import type { FC } from 'react';
 import React, { memo, useEffect, useState } from 'react';
@@ -46,13 +46,28 @@ const Switcher: FC<SwitcherProps> = ({
         </Fade>
       )}
     >
-      <Img
-        alt="light switch"
-        cursor="pointer"
-        onClick={onClick}
-        src={colorMode === 'light' ? '/svgs/on.svg' : '/svgs/off.svg'}
-        width="50px"
-      />
+      {/* // TODO-VV: hack for pre-fetching image */}
+      <Box position="relative">
+        <Img
+          alt="light switch"
+          cursor="pointer"
+          height="85px"
+          onClick={onClick}
+          position="absolute"
+          src="/svgs/off.svg"
+          visibility={colorMode === 'dark' ? 'visible' : 'hidden'}
+          width="50px"
+        />
+        <Img
+          alt="light switch"
+          cursor="pointer"
+          height="85px"
+          onClick={onClick}
+          src="/svgs/on.svg"
+          visibility={colorMode === 'light' ? 'visible' : 'hidden'}
+          width="50px"
+        />
+      </Box>
     </ConditionalFade>
   );
 };
