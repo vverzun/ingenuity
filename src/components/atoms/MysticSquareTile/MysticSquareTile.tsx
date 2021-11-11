@@ -1,43 +1,44 @@
-import React, { memo } from 'react';
-import type { FC } from 'react';
 import { Flex, useColorModeValue } from '@chakra-ui/react';
+import type { FC } from 'react';
+import React, { memo } from 'react';
+
 import type { MysticSquareTileProps } from './MysticSquareTile.types';
 
 const MysticSquareTile: FC<MysticSquareTileProps> = ({
-  y,
-  x,
-  symbol,
   onMysticSquareTileClick,
+  symbol,
+  x,
+  y,
 }) => {
   const color = useColorModeValue('white', 'black');
   const backgroundColor = useColorModeValue('black', 'white');
 
   const onClick = (): void => {
-    onMysticSquareTileClick({ y, x });
+    onMysticSquareTileClick({ x, y });
   };
 
   return (
     <Flex
-      width="50px"
-      height="50px"
       alignItems="center"
-      justifyContent="center"
       cursor="pointer"
+      height="50px"
+      justifyContent="center"
       onClick={onClick}
+      width="50px"
     >
       <Flex
-        width="100%"
-        height="100%"
-        alignItems="center"
-        justifyContent="center"
-        fontSize="30px"
-        color={color}
-        backgroundColor={backgroundColor}
         _active={{
-          w: '40px',
-          h: '40px',
           fontSize: '25px',
+          h: '40px',
+          w: '40px',
         }}
+        alignItems="center"
+        backgroundColor={backgroundColor}
+        color={color}
+        fontSize="30px"
+        height="100%"
+        justifyContent="center"
+        width="100%"
       >
         {symbol}
       </Flex>

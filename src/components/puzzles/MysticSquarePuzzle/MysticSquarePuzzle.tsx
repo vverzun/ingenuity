@@ -1,21 +1,22 @@
-import React, { useCallback, useRef, useState } from 'react';
-import type { FC } from 'react';
-import { Center, Grid, useColorModeValue } from '@chakra-ui/react';
 import { MysticSquareTile, Switcher } from '@atoms';
 import type { Coordinates } from '@atoms/types';
+import { Center, Grid, useColorModeValue } from '@chakra-ui/react';
 import { MYSTIC_SQUARE_TILES } from '@constants';
 import { getRandomTileCoordinates, shiftTiles } from '@helpers';
+import type { FC } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
+
 import type { MysticSquareState } from './MysticSquarePuzzle.types';
 
 const MysticSquarePuzzle: FC = () => {
   const [isTilesShuffled, setIsTilesShuffled] = useState<boolean>(false);
   const [mysticSquareState, setMysticSquareState] = useState<MysticSquareState>(
     {
-      mysticSquareTiles: MYSTIC_SQUARE_TILES,
       emptyTileCoordinates: {
-        y: 3,
         x: 3,
+        y: 3,
       },
+      mysticSquareTiles: MYSTIC_SQUARE_TILES,
     }
   );
 
@@ -27,16 +28,16 @@ const MysticSquarePuzzle: FC = () => {
   const handleMysticSquareTileClick = (
     clickedTileCoordinates: Coordinates
   ): void => {
-    const { mysticSquareTiles, emptyTileCoordinates } =
+    const { emptyTileCoordinates, mysticSquareTiles } =
       mysticSquareStateRef.current;
 
     setMysticSquareState({
+      emptyTileCoordinates: clickedTileCoordinates,
       mysticSquareTiles: shiftTiles({
-        emptyTileCoordinates,
         clickedTileCoordinates,
+        emptyTileCoordinates,
         mysticSquareTiles,
       }),
-      emptyTileCoordinates: clickedTileCoordinates,
     });
   };
 
@@ -66,33 +67,33 @@ const MysticSquarePuzzle: FC = () => {
   const gridBorderColor = useColorModeValue('black', 'white');
 
   return (
-    <Center height="100vh" flexDirection="column">
+    <Center flexDirection="column" height="100vh">
       <Grid
         alignItems="center"
-        justifyItems="center"
-        templateColumns="repeat(4, 1fr)"
-        templateRows="repeat(4, 1fr)"
+        backgroundColor={gridBackgroundColor}
+        border={`5px solid ${gridBorderColor}`}
         gap="5px"
+        justifyItems="center"
         marginBottom="60px"
         padding="5px"
-        border={`5px solid ${gridBorderColor}`}
-        backgroundColor={gridBackgroundColor}
+        templateColumns="repeat(4, 1fr)"
+        templateRows="repeat(4, 1fr)"
       >
         {mysticSquareState.mysticSquareTiles.map((row, y) =>
           row.map((letter, x) => (
             <MysticSquareTile
               key={letter.id}
+              onMysticSquareTileClick={handleMysticSquareTileClick}
+              symbol={letter.symbol}
               x={x}
               y={y}
-              symbol={letter.symbol}
-              onMysticSquareTileClick={handleMysticSquareTileClick}
             />
           ))
         )}
       </Grid>
       <Switcher
-        withDelayedFadeInAnimation
         onSwitcherClick={handleSwitcherClick}
+        withDelayedFadeInAnimation
       />
     </Center>
   );

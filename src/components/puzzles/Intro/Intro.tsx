@@ -1,8 +1,8 @@
-import React from 'react';
-import type { FC } from 'react';
-import { useRouter } from 'next/router';
-import { Box, Center } from '@chakra-ui/react';
 import { Switcher, TypingAnimationText } from '@atoms';
+import { Box, Center } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import type { FC } from 'react';
+import React from 'react';
 
 const Intro: FC = () => {
   const router = useRouter();
@@ -12,13 +12,13 @@ const Intro: FC = () => {
   };
 
   return (
-    <Center height="100vh" flexDirection="column">
+    <Center flexDirection="column" height="100vh">
       <Box marginBottom="60px">
         <TypingAnimationText text="It's dark in here." />
       </Box>
       <Switcher
-        withDelayedFadeInAnimation
         onSwitcherClick={handleSwitcherClick}
+        withDelayedFadeInAnimation
       />
     </Center>
   );

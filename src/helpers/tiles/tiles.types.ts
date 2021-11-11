@@ -1,7 +1,7 @@
-import type { Letter, Coordinates } from '@atoms/types';
+import type { Coordinates, Letter } from '@atoms/types';
 
 export type ShiftTilesParams = {
-  emptyTileCoordinates: Coordinates;
   clickedTileCoordinates: Coordinates;
+  emptyTileCoordinates: Coordinates;
   mysticSquareTiles: Array<Letter[]>;
 };

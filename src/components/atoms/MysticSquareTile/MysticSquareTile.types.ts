@@ -1,9 +1,9 @@
 export type Coordinates = {
-  y: number;
   x: number;
+  y: number;
 };
 
 export type MysticSquareTileProps = Coordinates & {
+  onMysticSquareTileClick: ({ x, y }: { x: number; y: number }) => void;
   symbol: string;
-  onMysticSquareTileClick: ({ x, y }: { y: number; x: number }) => void;
 };

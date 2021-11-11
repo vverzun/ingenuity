@@ -1,13 +1,14 @@
-import React, { memo, useEffect, useState } from 'react';
-import type { FC } from 'react';
 import { Fade, Img, useColorMode } from '@chakra-ui/react';
 import { FADE_DELAY, FADE_DURATION } from '@constants';
+import type { FC } from 'react';
+import React, { memo, useEffect, useState } from 'react';
+
 import { ConditionalFade } from '../ConditionalFade';
 import type { SwitcherProps, SwitcherSound } from './Switcher.types';
 
 const Switcher: FC<SwitcherProps> = ({
-  withDelayedFadeInAnimation,
   onSwitcherClick,
+  withDelayedFadeInAnimation,
 }) => {
   const [switcherSound, setSwitcherSound] = useState<SwitcherSound | null>(
     null
@@ -17,8 +18,8 @@ const Switcher: FC<SwitcherProps> = ({
 
   useEffect(() => {
     setSwitcherSound({
-      turnOn: new Audio('/sounds/turnOn.mp3'),
       turnOff: new Audio('/sounds/turnOff.mp3'),
+      turnOn: new Audio('/sounds/turnOn.mp3'),
     });
   }, []);
 
@@ -46,11 +47,11 @@ const Switcher: FC<SwitcherProps> = ({
       )}
     >
       <Img
-        src={colorMode === 'light' ? '/svgs/on.svg' : '/svgs/off.svg'}
         alt="light switch"
-        width="50px"
         cursor="pointer"
         onClick={onClick}
+        src={colorMode === 'light' ? '/svgs/on.svg' : '/svgs/off.svg'}
+        width="50px"
       />
     </ConditionalFade>
   );

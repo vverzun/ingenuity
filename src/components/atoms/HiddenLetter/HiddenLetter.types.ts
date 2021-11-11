@@ -1,8 +1,8 @@
 export type HiddenLetterProps = {
-  id: string;
-  symbol: string;
   enteredLettersIds: string[];
+  id: string;
   onLetterClick: (letter: Letter) => void;
+  symbol: string;
 };
 
 export type Letter = Omit<

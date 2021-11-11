@@ -1,7 +1,7 @@
 import type { ThemeConfig } from '@chakra-ui/react';
 import { extendTheme } from '@chakra-ui/react';
-import { mode } from '@chakra-ui/theme-tools';
 import type { StyleFunctionProps } from '@chakra-ui/theme-tools';
+import { mode } from '@chakra-ui/theme-tools';
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -24,8 +24,8 @@ const styles = {
 const theme = extendTheme({
   config,
   fonts: {
-    heading: 'Major Mono Display',
     body: 'Major Mono Display',
+    heading: 'Major Mono Display',
   },
   styles,
 });

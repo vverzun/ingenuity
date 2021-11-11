@@ -1,6 +1,6 @@
-import type { Letter, Coordinates } from '@atoms/types';
+import type { Coordinates, Letter } from '@atoms/types';
 
 export type MysticSquareState = {
-  mysticSquareTiles: Array<Letter[]>;
   emptyTileCoordinates: Coordinates;
+  mysticSquareTiles: Array<Letter[]>;
 };

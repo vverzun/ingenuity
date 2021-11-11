@@ -1,31 +1,32 @@
-import type { Letter, Coordinates } from '@atoms/types';
+import type { Coordinates, Letter } from '@atoms/types';
 import { getRandomNumber } from '@helpers';
+
 import type { ShiftTilesParams } from './tiles.types';
 
 export const getRandomTileCoordinates = (
   emptyTileCoordinates: Coordinates
 ): Coordinates => {
   const axes: Array<keyof Coordinates> = ['y', 'x'];
-  const randomAxis = axes[getRandomNumber({ min: 0, max: 1 })];
+  const randomAxis = axes[getRandomNumber({ max: 1, min: 0 })];
 
   const randomClickedTileCoordinates = { ...emptyTileCoordinates };
 
   randomClickedTileCoordinates[randomAxis] = getRandomNumber({
-    min: 0,
-    max: 3,
     excl: emptyTileCoordinates[randomAxis],
+    max: 3,
+    min: 0,
   });
 
   return randomClickedTileCoordinates;
 };
 
 export const shiftTiles = ({
-  emptyTileCoordinates,
   clickedTileCoordinates,
+  emptyTileCoordinates,
   mysticSquareTiles,
 }: ShiftTilesParams): Array<Letter[]> => {
-  const { y: emptyY, x: emptyX } = emptyTileCoordinates;
-  const { y: clickedY, x: clickedX } = clickedTileCoordinates;
+  const { x: emptyX, y: emptyY } = emptyTileCoordinates;
+  const { x: clickedX, y: clickedY } = clickedTileCoordinates;
 
   const isEmptyTileClicked =
     emptyTileCoordinates.y === clickedTileCoordinates.y &&
@@ -38,7 +39,7 @@ export const shiftTiles = ({
     return mysticSquareTiles;
   }
 
-  let { y: currentY, x: currentX } = { ...emptyTileCoordinates };
+  let { x: currentX, y: currentY } = { ...emptyTileCoordinates };
   const mysticSquareTilesToSet = JSON.parse(JSON.stringify(mysticSquareTiles));
 
   if (emptyY < clickedY && emptyX === clickedX) {

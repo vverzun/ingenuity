@@ -1,6 +1,7 @@
-import React from 'react';
-import type { FC } from 'react';
 import { keyframes, Text } from '@chakra-ui/react';
+import type { FC } from 'react';
+import React from 'react';
+
 import type { TypingAnimationTextProps } from './TypingAnimationText.types';
 
 const TypingAnimationText: FC<TypingAnimationTextProps> = ({ text }) => {
@@ -22,34 +23,34 @@ const TypingAnimationText: FC<TypingAnimationTextProps> = ({ text }) => {
 
   return (
     <Text
-      position="relative"
-      color="white"
-      fontSize="3.5vw"
-      letterSpacing="0.45em"
-      _before={{
-        content: '""',
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-        background: 'black',
-        animation: `${typing} 1.5s steps(${text.length}) forwards`,
-      }}
       _after={{
-        content: '""',
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-        width: '0.05em',
-        background: 'white',
         animation: `
           ${typing} 1.5s steps(${text.length}) forwards,
           ${blink} .5s 2s step-end infinite
         `,
+        background: 'white',
+        bottom: 0,
+        content: '""',
+        left: 0,
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        width: '0.05em',
       }}
+      _before={{
+        animation: `${typing} 1.5s steps(${text.length}) forwards`,
+        background: 'black',
+        bottom: 0,
+        content: '""',
+        left: 0,
+        position: 'absolute',
+        right: 0,
+        top: 0,
+      }}
+      color="white"
+      fontSize="3.5vw"
+      letterSpacing="0.45em"
+      position="relative"
     >
       {text}
     </Text>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import type { UseViewport } from './types';
 
 const useViewport = (): UseViewport => {
@@ -20,8 +21,8 @@ const useViewport = (): UseViewport => {
   }, []);
 
   return {
-    width,
     height,
+    width,
   } as const;
 };
 

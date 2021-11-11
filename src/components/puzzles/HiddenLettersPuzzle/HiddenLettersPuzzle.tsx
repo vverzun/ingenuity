@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from 'react';
-import type { FC } from 'react';
-import { Box, Center, Flex, useColorMode } from '@chakra-ui/react';
 import { HiddenLetter, Switcher, TypingAnimationText } from '@atoms';
 import type { Letter } from '@atoms/types';
+import { Box, Center, Flex, useColorMode } from '@chakra-ui/react';
 import { HIDDEN_LETTERS } from '@constants';
 import { shuffleArray } from '@helpers';
 import router from 'next/router';
+import type { FC } from 'react';
+import React, { useMemo, useState } from 'react';
 
 const HiddenLettersPuzzle: FC = () => {
   const [isPuzzleSolved, setIsPuzzleSolved] = useState<boolean>(false);
@@ -54,8 +54,8 @@ const HiddenLettersPuzzle: FC = () => {
             <TypingAnimationText text="That was easy... huh?" />
           </Box>
           <Switcher
-            withDelayedFadeInAnimation
             onSwitcherClick={handleSwitcherClick}
+            withDelayedFadeInAnimation
           />
         </>
       ) : (
@@ -63,14 +63,14 @@ const HiddenLettersPuzzle: FC = () => {
           <Box marginBottom="60px">
             <Switcher onSwitcherClick={handleSwitcherClick} />
           </Box>
-          <Flex justifyContent="space-evenly" alignSelf="stretch">
+          <Flex alignSelf="stretch" justifyContent="space-evenly">
             {shuffledHiddenLetters.map(({ id, symbol }) => (
               <HiddenLetter
                 key={id}
-                id={id}
-                symbol={symbol}
                 enteredLettersIds={enteredLettersIds}
+                id={id}
                 onLetterClick={handleLetterClick}
+                symbol={symbol}
               />
             ))}
           </Flex>
