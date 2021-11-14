@@ -5,3 +5,8 @@ export type ShiftTilesParams = {
   emptyTileCoordinates: Coordinates;
   mysticSquareTiles: Array<Letter[]>;
 };
+
+export type GetIsPuzzleSolvedParams = {
+  emptyTileCoordinates: Coordinates;
+  mysticSquareTiles: Array<Letter[]>;
+};

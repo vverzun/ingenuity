@@ -1,7 +1,8 @@
 import type { Coordinates, Letter } from '@atoms/types';
+import { MYSTIC_SQUARE_TILES } from '@constants';
 import { getRandomNumber } from '@helpers';
 
-import type { ShiftTilesParams } from './tiles.types';
+import type { GetIsPuzzleSolvedParams, ShiftTilesParams } from './tiles.types';
 
 export const getRandomTileCoordinates = (
   emptyTileCoordinates: Coordinates
@@ -27,17 +28,6 @@ export const shiftTiles = ({
 }: ShiftTilesParams): Array<Letter[]> => {
   const { x: emptyX, y: emptyY } = emptyTileCoordinates;
   const { x: clickedX, y: clickedY } = clickedTileCoordinates;
-
-  const isEmptyTileClicked =
-    emptyTileCoordinates.y === clickedTileCoordinates.y &&
-    emptyTileCoordinates.x === clickedTileCoordinates.x;
-  const isTileBlocked =
-    emptyTileCoordinates.y !== clickedTileCoordinates.y &&
-    emptyTileCoordinates.x !== clickedTileCoordinates.x;
-
-  if (isEmptyTileClicked || isTileBlocked) {
-    return mysticSquareTiles;
-  }
 
   let { x: currentX, y: currentY } = { ...emptyTileCoordinates };
   const mysticSquareTilesToSet = JSON.parse(JSON.stringify(mysticSquareTiles));
@@ -72,4 +62,22 @@ export const shiftTiles = ({
     mysticSquareTiles[emptyY][emptyX];
 
   return mysticSquareTilesToSet;
+};
+
+export const getIsPuzzleSolved = ({
+  emptyTileCoordinates,
+  mysticSquareTiles,
+}: GetIsPuzzleSolvedParams): boolean => {
+  const { x: emptyX, y: emptyY } = emptyTileCoordinates;
+  if (emptyY !== 3 && emptyX !== 3) {
+    return false;
+  }
+
+  return mysticSquareTiles.every((row, y) =>
+    row.every(
+      (letter, x) =>
+        MYSTIC_SQUARE_TILES[y][x].id === letter.id ||
+        MYSTIC_SQUARE_TILES[y][x].symbol === letter.symbol
+    )
+  );
 };
