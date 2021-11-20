@@ -1,7 +1,6 @@
-export { shuffleArray } from './array';
-export { getRandomNumber } from './random';
 export {
   getIsPuzzleSolved,
   getRandomTileCoordinates,
   shiftTiles,
 } from './tiles';
+export type { ShiftTilesParams } from './tiles.types';

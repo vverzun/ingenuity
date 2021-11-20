@@ -11,7 +11,7 @@ export const HIDDEN_LETTERS: Letter[] = [
   { id: 'f1211075-0b7c-4e82-847f-4baf1466bd1b', symbol: 'E' },
 ];
 
-export const MYSTIC_SQUARE_LETTERS: Array<Letter[]> = [
+export const MYSTIC_SQUARE_TILES: Array<Letter[]> = [
   [
     { id: '7e0428db-0781-47aa-8253-8541f9f2d63d', symbol: 'R' },
     { id: '85f5bf9d-f0ea-435b-bab8-5875a0b6965b', symbol: 'A' },
@@ -34,6 +34,6 @@ export const MYSTIC_SQUARE_LETTERS: Array<Letter[]> = [
     { id: '76cbe19d-84bf-4689-87e7-03e6b6c0a7ee', symbol: 'P' },
     { id: 'ed42cbae-e1e2-464f-a3fb-5f8fb6e7a930', symbol: 'A' },
     { id: 'd2a1ef54-dd05-4bb3-b9df-8a995f9e6194', symbol: 'L' },
-    { id: '5227c47f-fa65-4ddc-aea6-94b21e4137ee', symbol: 'empty' },
+    { id: '5227c47f-fa65-4ddc-aea6-94b21e4137ee', symbol: '' },
   ],
 ];

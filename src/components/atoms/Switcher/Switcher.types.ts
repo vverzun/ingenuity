@@ -1,9 +1,9 @@
-export type SwitcherSound = {
-  turnOn: HTMLAudioElement;
-  turnOff: HTMLAudioElement;
+export type SwitcherProps = {
+  onSwitcherClick: () => void;
+  withDelayedFadeInAnimation?: boolean;
 };
 
-export type SwitcherProps = {
-  isOn: boolean;
-  onSwitcherClick: () => void;
+export type SwitcherSound = {
+  turnOff: HTMLAudioElement;
+  turnOn: HTMLAudioElement;
 };

@@ -1,1 +1,1 @@
-export { getRandomNumberInclusively, shuffleArray } from './array';
+export { shuffleArray } from './array';
