@@ -25,8 +25,8 @@ const TypingAnimationText: FC<TypingAnimationTextProps> = ({ text }) => {
     <Text
       _after={{
         animation: `
-          ${typing} 1.5s steps(${text.length}) forwards,
-          ${blink} .5s 2s step-end infinite
+          ${typing} 1.5s 1s steps(${text.length}) forwards,
+          ${blink} .5s 3s step-end infinite
         `,
         background: 'white',
         bottom: 0,
@@ -38,7 +38,7 @@ const TypingAnimationText: FC<TypingAnimationTextProps> = ({ text }) => {
         width: '0.05em',
       }}
       _before={{
-        animation: `${typing} 1.5s steps(${text.length}) forwards`,
+        animation: `${typing} 1.5s 1s steps(${text.length}) forwards`,
         background: 'black',
         bottom: 0,
         content: '""',
